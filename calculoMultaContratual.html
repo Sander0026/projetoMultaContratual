@@ -1,0 +1,44 @@
+<meta charset="utf-8">
+
+<script>
+	function mostra(frase){
+		document.write(frase);
+	}
+	
+	// Solicita o valor da multa contratual
+	let multaContratual = parseFloat(prompt("Digite o valor da multa contratual:"));
+
+	// Solicita a data inicial do contrato
+	let dataInicial = prompt("Digite a data inicial do contrato (dd-mm-yyyy):");
+
+	// Converte a data inicial para um objeto Date
+	let dataInicialObj = new Date(dataInicial.split("-").reverse().join("-"));
+
+	// Solicita a data final do contrato
+	let dataFinal = prompt("Digite a data final do contrato (dd-mm-yyyy):");
+
+	// Converte a data final para um objeto Date
+	let dataFinalObj = new Date(dataFinal.split("-").reverse().join("-"));
+
+	// Calcula o número de dias entre as datas
+	let diasEntreDatas = (dataFinalObj - dataInicialObj) / (1000 * 60 * 60 * 24);
+
+	// Calcula o valor diário da multa contratual
+	let multaDiaria = multaContratual / diasEntreDatas;
+
+	// Solicita a data de cancelamento do contrato
+	let dataCancelamento = prompt("Digite a data de cancelamento do contrato (dd-mm-yyyy):");
+
+	// Converte a data de cancelamento para um objeto Date
+	let dataCancelamentoObj = new Date(dataCancelamento.split("-").reverse().join("-"));
+
+	// Calcula o número de dias entre a data de cancelamento e a data final do contrato
+	let diasEntreADataDoCancelamento = (dataFinalObj - dataCancelamentoObj) / (1000 * 60 * 60 * 24);
+
+	// Calcula o valor restante da multa contratual
+	let valorRestanteMulta = diasEntreADataDoCancelamento * multaDiaria;
+
+	// Exibe o valor restante da multa contratual para o usuário
+	mostra("<h1>O valor restante da multa contratual é de R$ " + valorRestanteMulta.toFixed(2));
+	
+</script>
